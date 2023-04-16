@@ -1,38 +1,36 @@
 {
-    "Actions": [
-        {
-            "Icon": "Images/ActionIcon",
-            "Name": "TODO_ENTER_NAME_OF_ACTION",
-            "States": [
-                {
-                    "Image": "Images/KeyImage",
-                    "TitleAlignment": "middle",
-                    "FontSize": "12"
-                }
-            ],
-            "SupportedInMultiActions": false,
-            "Tooltip": "TODO_ENTER_TOOLTIP",
-            "UUID": "StreamDeckBeamNG.pluginaction",
-            "PropertyInspectorPath": "PropertyInspector/PluginActionPI.html"
-        }
-    ],
-    "Author": "TODO_ENTER_YOUR_NAME",
-    "Name": "StreamDeckBeamNG",
-    "Description": "TODO_ENTER_PLUGIN_DESCRIPTION",
+    "Author": "Tomasz Pieczykolan",
+    "Name": "BeamNG.drive",
+    "Version": "1.0.0",
+    "Description": "Displays information from BeamNG.drive",
+    "URL": "https://github.com/tomaszpieczykolan/streamdeck-beamng",
     "Icon": "Images/PluginIcon",
-    "URL": "TODO_ENTER_YOUR_HOMEPAGE",
-    "Version": "1.0",
-    "CodePath": "StreamDeckBeamNG",
-    "Category": "Custom",
+    "Category": "BeamNG.drive",
     "CategoryIcon": "Images/CategoryIcon",
+    "CodePath": "StreamDeckBeamNG",
+    "SDKVersion": 2,
+    "Software": {
+        "MinimumVersion": "4.9"
+    },
     "OS": [
         {
             "Platform": "windows",
             "MinimumVersion": "10"
         }
     ],
-    "SDKVersion": 2,
-    "Software": {
-        "MinimumVersion": "4.9"
-    }
+    "Actions": [
+        {
+            "Name": "Speedometer",
+            "Tooltip": "Displays your speed",
+            "Icon": "Images/ActionIcon",
+            "States": [
+                {
+                    "Image": "Images/KeyImage"
+                }
+            ],
+            "SupportedInMultiActions": false,
+            "UUID": "com.tomaszpieczykolan.streamdeck.beamng.action.speedometer",
+            "PropertyInspectorPath": "PropertyInspector/PluginActionPI.html"
+        }
+    ]
 }
