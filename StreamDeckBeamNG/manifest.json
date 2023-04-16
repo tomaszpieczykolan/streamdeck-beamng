@@ -1,11 +1,11 @@
 {
     "Actions": [
         {
-            "Icon": "Images/icon",
+            "Icon": "Images/ActionIcon",
             "Name": "TODO_ENTER_NAME_OF_ACTION",
             "States": [
                 {
-                    "Image": "Images/pluginAction",
+                    "Image": "Images/KeyImage",
                     "TitleAlignment": "middle",
                     "FontSize": "12"
                 }
@@ -19,12 +19,12 @@
     "Author": "TODO_ENTER_YOUR_NAME",
     "Name": "StreamDeckBeamNG",
     "Description": "TODO_ENTER_PLUGIN_DESCRIPTION",
-    "Icon": "Images/pluginIcon",
+    "Icon": "Images/PluginIcon",
     "URL": "TODO_ENTER_YOUR_HOMEPAGE",
     "Version": "1.0",
     "CodePath": "StreamDeckBeamNG",
     "Category": "Custom",
-    "CategoryIcon": "Images/categoryIcon",
+    "CategoryIcon": "Images/CategoryIcon",
     "OS": [
         {
             "Platform": "windows",

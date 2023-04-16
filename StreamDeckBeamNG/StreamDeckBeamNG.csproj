@@ -80,6 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="!!README!!.txt" />
+    <Content Include="Images\ActionIcon.svg" />
+    <Content Include="Images\CategoryIcon.svg" />
+    <Content Include="Images\KeyImage.svg" />
+    <Content Include="Images\PluginIcon.svg" />
     <Content Include="PropertyInspector\PluginActionPI.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
