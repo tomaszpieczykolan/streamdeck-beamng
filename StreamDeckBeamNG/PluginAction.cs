@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StreamDeckBeamNG
 {
-    [PluginActionId("StreamDeckBeamNG.pluginaction")]
+    [PluginActionId("com.tomaszpieczykolan.streamdeck.beamng.action.speedometer")]
     public class PluginAction : PluginBase
     {
         private class PluginSettings

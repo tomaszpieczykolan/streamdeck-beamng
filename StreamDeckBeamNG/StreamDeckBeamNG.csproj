@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\StreamDeckBeamNG.sdPlugin\</OutputPath>
+    <OutputPath>bin\Debug\com.tomaszpieczykolan.streamdeck.beamng.action.speedometer.sdPlugin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -80,10 +80,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="!!README!!.txt" />
-    <Content Include="Images\ActionIcon.svg" />
-    <Content Include="Images\CategoryIcon.svg" />
-    <Content Include="Images\KeyImage.svg" />
-    <Content Include="Images\PluginIcon.svg" />
+    <Content Include="Images\ActionIcon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CategoryIcon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\KeyImage.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\PluginIcon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="PropertyInspector\PluginActionPI.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
