@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("StreamDeckBeamNG")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright © 2023 Tomasz Pieczykolan")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
