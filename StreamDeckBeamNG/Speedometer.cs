@@ -37,6 +37,8 @@ namespace StreamDeckBeamNG
         #region Private Members
 
         private PluginSettings settings;
+        private string unit = "";
+        private Single unitMultiplier = 1.0f;
 
         #endregion
         public Speedometer(SDConnection connection, InitialPayload payload) : base(connection, payload)
@@ -50,6 +52,8 @@ namespace StreamDeckBeamNG
             {
                 this.settings = payload.Settings.ToObject<PluginSettings>();
             }
+
+            UpdateFromSettings();
         }
 
         public override void Dispose()
@@ -70,6 +74,8 @@ namespace StreamDeckBeamNG
         {
             Tools.AutoPopulateSettings(settings, payload.Settings);
             SaveSettings();
+
+            UpdateFromSettings();
         }
 
         public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
@@ -82,5 +88,23 @@ namespace StreamDeckBeamNG
         }
 
         #endregion
+
+        private void UpdateFromSettings() {
+            if (settings.SpeedUnitMs)
+            {
+                unit = "m/s";
+                unitMultiplier = 1.0f;
+            }
+            if (settings.SpeedUnitKmh)
+            {
+                unit = "km/h";
+                unitMultiplier = 3.6f;
+            }
+            if (settings.SpeedUnitMph)
+            {
+                unit = "mph";
+                unitMultiplier = 2.23693629f;
+            }
+        }
     }
 }
