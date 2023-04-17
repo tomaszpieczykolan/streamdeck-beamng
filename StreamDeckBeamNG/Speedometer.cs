@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
 
 namespace StreamDeckBeamNG
 {
@@ -40,6 +42,8 @@ namespace StreamDeckBeamNG
         private string unit = "";
         private Single unitMultiplier = 1.0f;
 
+        private UdpClient receiver;
+
         #endregion
         public Speedometer(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
@@ -54,10 +58,30 @@ namespace StreamDeckBeamNG
             }
 
             UpdateFromSettings();
+
+            receiver = new UdpClient(4444);
+            receiver.BeginReceive(DataReceived, receiver);
         }
 
         public override void Dispose()
         {
+        }
+
+        private void DataReceived(IAsyncResult ar) {
+            UdpClient c = (UdpClient)ar.AsyncState;
+            IPEndPoint receivedIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
+            Byte[] receivedBytes = c.EndReceive(ar, ref receivedIpEndPoint);
+
+            PacketReader reader = new PacketReader(receivedBytes);
+
+            reader.Skip(10);
+            byte gear = reader.ReadByte();
+            reader.Skip(1);
+            float speed = reader.ReadSingle();
+
+            if (receiver != null) {
+                c.BeginReceive(DataReceived, ar.AsyncState);
+            }
         }
 
         public override void KeyPressed(KeyPayload payload) { }
