@@ -12,18 +12,22 @@
 </head>
 <body>
     <div class="sdpi-wrapper">
-        <div class="sdpi-item" id="dvOutputFileName">
-            <div class="sdpi-item-label">File Name:</div>
-            <input class="sdpi-item-value sdProperty" placeholder="c:\mycounter.txt" value="" id="outputFileName">
-        </div>
-        <div class="sdpi-item" id="dvSave">
-            <div class="sdpi-item-label">Save File Name</div>
-            <button class="sdpi-item-value max20" onclick="setSettings()">Save</button>
-            <p>Click here after setting the file name</p>
-        </div>
-        <div class="sdpi-item" id="dvTitlePrefix">
-            <div class="sdpi-item-label">Input Text</div>
-            <input class="sdpi-item-value sdProperty" placeholder="" value="" id="inputString" oninput="setSettings()">
+        <div class="sdpi-item" type="radio" id="dvSpeedUnit">
+            <div class="sdpi-item-label">Unit</div>
+            <div class="sdpi-item-value sdProperty">
+                <span class="sdpi-item-child">
+                    <input id="speedUnitMs" class="sdProperty sdCheckbox" type="radio" name="speedUnit" oninput="setSettings()">
+                    <label for="speedUnitMs" class="sdpi-item-label"><span></span>m/s</label>
+                </span>
+                <span class="sdpi-item-child">
+                    <input id="speedUnitKmh" class="sdProperty sdCheckbox" type="radio" name="speedUnit" oninput="setSettings()">
+                    <label for="speedUnitKmh" class="sdpi-item-label"><span></span>km/h</label>
+                </span>
+                <span class="sdpi-item-child">
+                    <input id="speedUnitMph" class="sdProperty sdCheckbox" type="radio" name="speedUnit" oninput="setSettings()">
+                    <label for="speedUnitMph" class="sdpi-item-label"><span></span>mph</label>
+                </span>
+            </div>
         </div>
     </div>
 </body>

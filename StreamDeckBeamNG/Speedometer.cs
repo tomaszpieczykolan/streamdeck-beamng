@@ -18,17 +18,20 @@ namespace StreamDeckBeamNG
             public static PluginSettings CreateDefaultSettings()
             {
                 PluginSettings instance = new PluginSettings();
-                instance.OutputFileName = String.Empty;
-                instance.InputString = String.Empty;
+                instance.SpeedUnitMs = false;
+                instance.SpeedUnitKmh = true;
+                instance.SpeedUnitMph = false;
                 return instance;
             }
 
-            [FilenameProperty]
-            [JsonProperty(PropertyName = "outputFileName")]
-            public string OutputFileName { get; set; }
+            [JsonProperty(PropertyName = "speedUnitMs")]
+            public bool SpeedUnitMs { get; set; }
 
-            [JsonProperty(PropertyName = "inputString")]
-            public string InputString { get; set; }
+            [JsonProperty(PropertyName = "speedUnitKmh")]
+            public bool SpeedUnitKmh { get; set; }
+
+            [JsonProperty(PropertyName = "speedUnitMph")]
+            public bool SpeedUnitMph { get; set; }
         }
 
         #region Private Members
