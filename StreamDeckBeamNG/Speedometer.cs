@@ -58,13 +58,9 @@ namespace StreamDeckBeamNG
 
         public override void Dispose()
         {
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Destructor called");
         }
 
-        public override void KeyPressed(KeyPayload payload)
-        {
-            Logger.Instance.LogMessage(TracingLevel.INFO, "Key Pressed");
-        }
+        public override void KeyPressed(KeyPayload payload) { }
 
         public override void KeyReleased(KeyPayload payload) { }
 
