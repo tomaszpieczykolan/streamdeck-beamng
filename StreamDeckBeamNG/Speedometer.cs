@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace StreamDeckBeamNG
 {
     [PluginActionId("com.tomaszpieczykolan.streamdeck.beamng.action.speedometer")]
-    public class PluginAction : PluginBase
+    public class Speedometer : PluginBase
     {
         private class PluginSettings
         {
@@ -36,7 +36,7 @@ namespace StreamDeckBeamNG
         private PluginSettings settings;
 
         #endregion
-        public PluginAction(SDConnection connection, InitialPayload payload) : base(connection, payload)
+        public Speedometer(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
             if (payload.Settings == null || payload.Settings.Count == 0)
             {
