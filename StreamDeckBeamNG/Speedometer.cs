@@ -13,7 +13,7 @@ using System.Net.Sockets;
 namespace StreamDeckBeamNG
 {
     [PluginActionId("com.tomaszpieczykolan.streamdeck.beamng.action.speedometer")]
-    public class Speedometer : PluginBase
+    public class Speedometer : PluginBase, IOutGaugeSubscriber
     {
         private class PluginSettings
         {
@@ -42,8 +42,6 @@ namespace StreamDeckBeamNG
         private string unit = "";
         private Single unitMultiplier = 1.0f;
 
-        private UdpClient receiver;
-
         #endregion
         public Speedometer(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
@@ -59,40 +57,25 @@ namespace StreamDeckBeamNG
 
             UpdateFromSettings();
 
-            receiver = new UdpClient(4444);
-            receiver.BeginReceive(DataReceived, receiver);
+            OutGaugeReceiver.Instance.Subscribers.Add(this);
         }
 
         public override void Dispose()
         {
+            OutGaugeReceiver.Instance.Subscribers.Remove(this);
         }
 
-        private void DataReceived(IAsyncResult ar) {
-            UdpClient c = (UdpClient)ar.AsyncState;
-            IPEndPoint receivedIpEndPoint = new IPEndPoint(IPAddress.Any, 0);
-            Byte[] receivedBytes = c.EndReceive(ar, ref receivedIpEndPoint);
-
-            PacketReader reader = new PacketReader(receivedBytes);
-
-            reader.Skip(10);
-            byte gear = reader.ReadByte();
-            reader.Skip(1);
-            float speed = reader.ReadSingle();
-            float rpm = reader.ReadSingle();
-
-            string svg = makeSVG(speed);
+        public void OnOutGaugeDataReceived(OutGaugeData data) {
+            string svg = makeSVG(data.speed);
             Connection.SetImageAsync(svg);
-
-            if (receiver != null) {
-                c.BeginReceive(DataReceived, ar.AsyncState);
-            }
         }
 
         public override void KeyPressed(KeyPayload payload) { }
 
         public override void KeyReleased(KeyPayload payload) { }
 
-        public override void OnTick() { }
+        public override void OnTick() {
+        }
 
         public override void ReceivedSettings(ReceivedSettingsPayload payload)
         {

@@ -67,6 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOutGaugeSubscriber.cs" />
+    <Compile Include="OutGaugeData.cs" />
+    <Compile Include="OutGaugeReceiver.cs" />
     <Compile Include="PacketReader.cs" />
     <Compile Include="Speedometer.cs" />
     <Compile Include="Program.cs" />
