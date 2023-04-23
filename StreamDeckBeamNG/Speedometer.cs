@@ -78,6 +78,10 @@ namespace StreamDeckBeamNG
             byte gear = reader.ReadByte();
             reader.Skip(1);
             float speed = reader.ReadSingle();
+            float rpm = reader.ReadSingle();
+
+            string svg = makeSVG(speed);
+            Connection.SetImageAsync(svg);
 
             if (receiver != null) {
                 c.BeginReceive(DataReceived, ar.AsyncState);
@@ -125,6 +129,23 @@ namespace StreamDeckBeamNG
                 unit = "mph";
                 unitMultiplier = 2.23693629f;
             }
+        }
+
+        private string makeSVG(Single speed) {
+            var svg = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"144\" height=\"144\" viewBox=\"0 0 144 144\">";
+
+            svg += $"<text text-anchor=\"middle\" alignment-baseline=\"middle\" x=\"72\" y=\"70\" font-size=\"65\" fill=\"#FFFFFF\" font-weight=\"bold\">{(speed * unitMultiplier):F0}</text>";
+            svg += $"<text text-anchor=\"middle\" alignment-baseline=\"middle\" x=\"72\" y=\"130\" font-size=\"40\" fill=\"#EEEEEE\">{unit}</text>";
+
+            svg += "</svg>";
+
+            return $"data:image/svg+xml;base64,{encoding(svg)}";
+        }
+
+        private string encoding(string toEncode) {
+            byte[] bytes = Encoding.GetEncoding(28591).GetBytes(toEncode);
+            string toReturn = System.Convert.ToBase64String(bytes);
+            return toReturn;
         }
     }
 }
